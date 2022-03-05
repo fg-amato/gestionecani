@@ -7,7 +7,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	   
-	   <title>Inserisci Nuovo Cane</title>
+	   <title>Modifica Cane</title>
 	 </head>
 	   <body class="d-flex flex-column h-100">
 	   
@@ -34,16 +34,16 @@
 			  
 			  <div class='card'>
 				    <div class='card-header'>
-				        <h5>Inserisci nuovo cane</h5> 
+				        <h5>Modifica cane</h5> 
 				    </div>
 				    <div class='card-body'>
 		
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>
 		
 		
-							<form method="post" action="ExecuteInsertCaneServlet" class="row g-3" novalidate="novalidate">
+							<form method="post" action="ExecuteEditCaneServlet" class="row g-3" novalidate="novalidate">
 							
-								<% Cane caneInPagina = (Cane )request.getAttribute("insert_cane_attr"); %>
+								<% Cane caneInPagina = (Cane)request.getAttribute("update_cane_attr"); %>
 							
 								<div class="col-md-6">
 									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
@@ -74,12 +74,16 @@
 									<input type="number" class="form-control" name="eta" id="eta" placeholder="Inserire età" 
 									value="<%=caneInPagina.getEta()!=null?caneInPagina.getEta():"" %>" required>
 								</div>
-							<div class="col-12">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-outline-primary">Conferma</button>
-								<a href="ListCaniServlet" class='btn btn-outline-secondary' style='width:80px'>
-					            	<i class='fa fa-chevron-left'></i> Back
-					        	</a>
-							</div>
+							<div class='card-footer'>
+							
+									<input type ="hidden" name= "idCane" value = <%= caneInPagina.getId() %>>
+								
+								
+									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-outline-info">Conferma modifica</button>
+		 							<a href="ListCaniServlet" class='btn btn-outline-secondary' style='width:80px'>
+					            		<i class='fa fa-chevron-left'></i> Back
+					        		</a>
+							  </div>
 		
 						</form>
   

@@ -35,7 +35,11 @@ public class UtilityCaneForm {
 			result.setPeso(Integer.parseInt(pesoInputStringParam));
 		}
 
-		result.setDataAdozione(parseDateArrivoFromString(dataArrivoStringParam));
+		if (!dataArrivoStringParam.isEmpty()) {
+			result.setDataAdozione(parseDateArrivoFromString(dataArrivoStringParam));
+		} else {
+			result.setDataAdozione(null);
+		}
 
 		return result;
 	}

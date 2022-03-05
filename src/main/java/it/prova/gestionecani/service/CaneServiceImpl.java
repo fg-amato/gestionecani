@@ -133,8 +133,21 @@ public class CaneServiceImpl implements CaneService {
 
 	@Override
 	public List<Cane> findByExample(Cane input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		// questo è come una connection
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			caneDao.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return caneDao.findByExample(input);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 	}
 
 }

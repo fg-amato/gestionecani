@@ -51,4 +51,35 @@ public class CaneDAOImpl implements CaneDAO {
 
 	}
 
+	@Override
+	public List<Cane> findByExample(Cane example) throws Exception {
+		if (example == null)
+			throw new Exception("Problema valore in input");
+
+		String query = "from cane c where 1=1 ";
+
+		if (example.getNome() != null && !example.getNome().isEmpty()) {
+			query += " and c.nome like '" + example.getNome() + "%' ";
+		}
+
+		if (example.getRazza() != null && !example.getRazza().isEmpty()) {
+			query += " and c.razza like '" + example.getRazza() + "%' ";
+		}
+
+		if (example.getPeso() != null && example.getPeso() > 0) {
+			query += " and c.peso > '" + example.getPeso() + "%'";
+		}
+
+		if (example.getEta() != null && example.getEta() > 0) {
+			query += " and c.eta > '" + example.getEta() + "%'";
+		}
+
+		if (example.getDataAdozione() != null) {
+			query += " and c.dataAdozione>='" + new java.sql.Date(example.getDataAdozione().getTime()) + "' ";
+		}
+
+		return entityManager.createQuery(query, Cane.class).getResultList();
+
+	}
+
 }
