@@ -56,7 +56,7 @@ public class CaneDAOImpl implements CaneDAO {
 		if (example == null)
 			throw new Exception("Problema valore in input");
 
-		String query = "from cane c where 1=1 ";
+		String query = "from Cane c where 1=1 ";
 
 		if (example.getNome() != null && !example.getNome().isEmpty()) {
 			query += " and c.nome like '" + example.getNome() + "%' ";
