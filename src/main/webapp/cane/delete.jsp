@@ -49,12 +49,12 @@
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Data di Adozione:</dt>
-							  <dd class="col-sm-9"><fmt:formatDate pattern="dd/MM/yyyy" value="${attivitaInPagina.data}" /></dd>
+							  <dd class="col-sm-9"><fmt:formatDate pattern="dd/MM/yyyy" value="${caneInPagina.dataAdozione}" /></dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Età:</dt>
-							  <dd class="col-sm-9">${caneInPagina.peso}</dd>
+							  <dd class="col-sm-9">${caneInPagina.eta}</dd>
 					    	</dl>
 					    	
 					    </div>
@@ -62,7 +62,7 @@
 					    <div class='card-footer'>
 					    	<form method="post" action="ExecuteDeleteCaneServlet" novalidate="novalidate">
 							
-								<input type ="hidden" name= "idCane" value = <%= caneInPagina.getId() %>>
+								<input type ="hidden" name= "idCane" value="${caneInPagina.id}">
 								
 								
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-outline-danger">Conferma rimozione</button>

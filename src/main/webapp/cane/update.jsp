@@ -2,6 +2,7 @@
 <%@page import="it.prova.gestionecani.model.Cane"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="it" class="h-100" >
 	 <head>
 	 
@@ -44,40 +45,39 @@
 		
 							<form method="post" action="ExecuteEditCaneServlet" class="row g-3" novalidate="novalidate">
 							
-								<% Cane caneInPagina = (Cane)request.getAttribute("update_cane_attr"); %>
-							
+								 <c:set var = "caneInPagina" value = "${update_cane_attr}"></c:set>
 								<div class="col-md-6">
 									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
 									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome"  
-										value="<%=caneInPagina.getNome()!=null?caneInPagina.getNome():"" %>" required>
+										value="${caneInPagina.nome}" required>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="razza" class="form-label">Razza <span class="text-danger">*</span></label>
 									<input type="razza" name="razza" id="razza" class="form-control" placeholder="Inserire la razza"  
-										value="<%=caneInPagina.getRazza()!=null?caneInPagina.getRazza():"" %>" required>
+										value="${caneInPagina.razza}" required>
 								</div>
 							
 								<div class="col-md-6">
 									<label for="peso" class="form-label">Peso <span class="text-danger">*</span></label>
 									<input type="number" class="form-control" name="peso" id="peso" placeholder="Inserire peso" 
-									value="<%=caneInPagina.getPeso()!=null?caneInPagina.getPeso():"" %>" required>
+									value="${caneInPagina.peso}" required>
 								</div>
 								
 								<div class="col-md-3">
 									<label for="dataAdozione" class="form-label">Data di Adozione<span class="text-danger">*</span></label>
 									<input class="form-control"  name="dataAdozione" id="dataAdozione" type="date" placeholder="dd/MM/yy" title="formato : gg/mm/aaaa" 
-										value="<%=caneInPagina.getDataAdozione()!=null? new SimpleDateFormat("yyyy-MM-dd").format(caneInPagina.getDataAdozione()):""  %>" required/>
+										value="<fmt:formatDate pattern="dd/MM/yyyy" value="${caneInPagina.dataAdozione}" />"/>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="eta" class="form-label">Età<span class="text-danger">*</span></label>
 									<input type="number" class="form-control" name="eta" id="eta" placeholder="Inserire età" 
-									value="<%=caneInPagina.getEta()!=null?caneInPagina.getEta():"" %>" required>
+									value="${caneInPagina.eta}" required>
 								</div>
 							<div class='card-footer'>
 							
-									<input type ="hidden" name= "idCane" value = <%= caneInPagina.getId() %>>
+									<input type ="hidden" name= "idCane" value = "${caneInPagina.id}">
 								
 								
 									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-outline-info">Conferma modifica</button>

@@ -65,8 +65,8 @@
 				                        	<td><c:out value="${item.peso}"/></td>
 				                        	<td>
 												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaCaneServlet?idCane=${item.id}">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareEditCaneServlet?idCane=${item.id}>">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteCaneServlet?idCane=${item.id}%>">Delete</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareEditCaneServlet?idCane=${item.id}">Edit</a>
+												<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteCaneServlet?idCane=${item.id}">Delete</a>
 											</td>
 				                		</tr>
 				                	</c:forEach>
