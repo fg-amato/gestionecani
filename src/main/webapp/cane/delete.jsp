@@ -2,7 +2,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="it" class="h-100"> 
 <head>
@@ -27,33 +28,33 @@
 					    <div class='card-header'>
 					        <h5>Sei sicuro di voler rimuovere il cane?</h5>
 					    </div>
-					       <% Cane caneInPagina = (Cane)request.getAttribute("caneRichiesto"); %>
+					       <c:set var = "caneInPagina" value = "${caneRichiesto}"></c:set>
 					    
 					
 					    <div class='card-body'>
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Nome</dt>
-							  <dd class="col-sm-9"><%=caneInPagina.getNome() %></dd>
+							  <dd class="col-sm-9">${caneInPagina.nome}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Razza:</dt>
-							  <dd class="col-sm-9"><%=caneInPagina.getRazza() %></dd>
+							  <dd class="col-sm-9">${caneInPagina.razza}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Peso:</dt>
-							  <dd class="col-sm-9"><%=caneInPagina.getPeso() %></dd>
+							  <dd class="col-sm-9">${caneInPagina.peso}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Data di Adozione:</dt>
-							  <dd class="col-sm-9"><%=caneInPagina.getDataAdozione()!=null? new SimpleDateFormat("dd/MM/yyyy").format(caneInPagina.getDataAdozione()):"N.D."  %></dd>
+							  <dd class="col-sm-9"><fmt:formatDate pattern="dd/MM/yyyy" value="${attivitaInPagina.data}" /></dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Età:</dt>
-							  <dd class="col-sm-9"><%=caneInPagina.getEta() %></dd>
+							  <dd class="col-sm-9">${caneInPagina.peso}</dd>
 					    	</dl>
 					    	
 					    </div>

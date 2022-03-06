@@ -57,20 +57,19 @@
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                	<% List<Cane> listaCani = (List<Cane>)request.getAttribute("listaCaniAttribute");
-				                		for(Cane item:listaCani){ %>
-				                    <tr >
-				                        <td><%=item.getId() %></td>
-				                        <td><%=item.getNome() %></td>
-				                        <td><%=item.getRazza() %></td>
-				                        <td><%=item.getPeso() %></td>
-				                        <td>
-											<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaCaneServlet?idCane=<%=item.getId() %>">Visualizza</a>
-											<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareEditCaneServlet?idCane=<%=item.getId()%>">Edit</a>
-											<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteCaneServlet?idCane=<%=item.getId()%>">Delete</a>
-										</td>
-				                    </tr>
-				                    <% } %>
+									<c:forEach items="${listaCaniAttribute}" var="item" >
+										<tr>
+				                        	<td><c:out value="${item.id}"/></td>
+				                        	<td><c:out value="${item.nome}"/></td>
+				                        	<td><c:out value="${item.razza}"/></td>
+				                        	<td><c:out value="${item.peso}"/></td>
+				                        	<td>
+												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaCaneServlet?idCane=${item.id}">Visualizza</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareEditCaneServlet?idCane=${item.id}>">Edit</a>
+												<a class="btn btn-outline-danger btn-sm" href="PrepareDeleteCaneServlet?idCane=${item.id}%>">Delete</a>
+											</td>
+				                		</tr>
+				                	</c:forEach>
 				                    
 				                </tbody>
 				            </table>
