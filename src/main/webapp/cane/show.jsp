@@ -1,6 +1,7 @@
 <!doctype html>
 <%@page import="it.prova.gestionecani.model.Cane"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="it" class="h-100" >
 	 <head>
 	 
